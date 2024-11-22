@@ -8,11 +8,14 @@ const AuthRedirect = () => {
 
   useEffect(() => {
     const extractTypeAndToken = () => {
+      const params = new URLSearchParams(window.location.search);
       const hash = window.location.hash;
+      console.log(params);
+      console.log(hash);
 
       const tokenParams = new URLSearchParams(hash.slice(1));
       const accessToken = tokenParams.get("access_token");
-      const type = accessToken?.length > 0 ? "recovery" : "email_change";
+      const type = tokenParams.get("type");
 
       setType(type);
       setAccessToken(accessToken);
