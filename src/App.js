@@ -1,15 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ResetPassword from "./ResetPassword/ResetPassword";
-import EmailChanged from "./EmailChanged/EmailChanged";
+import AuthRedirect from "./AuthRedirect/AuthRedirect";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="*" element={<h1>Not Found</h1>} />
-        <Route path="/email-changed" element={<EmailChanged />} />
+        <Route path="*" element={<AuthRedirect />} />
       </Routes>
     </Router>
   );
