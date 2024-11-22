@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ResetPassword from "./ResetPassword";
-import EmailChanged from "./EmailChanged";
+import ResetPassword from "../ResetPassword/ResetPassword";
+import EmailChanged from "../EmailChanged/EmailChanged";
 
 const AuthRedirect = () => {
   const [type, setType] = useState(null);
