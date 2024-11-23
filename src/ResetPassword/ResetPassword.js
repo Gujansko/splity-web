@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
@@ -6,25 +6,9 @@ const supabase = createClient(
   process.env.REACT_APP_SUPABASE_ANON_KEY || ""
 );
 
-const ResetPassword = () => {
+const ResetPassword = ({ accessToken }) => {
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [accessToken, setAccessToken] = useState("");
-
-  useEffect(() => {
-    const extractAccessToken = () => {
-      const hash = window.location.hash;
-      const params = new URLSearchParams(hash.slice(1));
-      return params.get("access_token");
-    };
-
-    const accessToken = extractAccessToken();
-    if (!accessToken) {
-      setMessage("Invalid or missing access token.");
-    } else {
-      setAccessToken(accessToken);
-    }
-  }, []);
 
   const handleSubmit = async () => {
     try {
@@ -48,7 +32,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <div>
+    <main>
       <h1>Reset Your Password</h1>
       <input
         type="password"
@@ -57,8 +41,14 @@ const ResetPassword = () => {
         onChange={(e) => setNewPassword(e.target.value)}
       />
       <button onClick={handleSubmit}>Submit</button>
-      <p>{message}</p>
-    </div>
+      <p
+        className={`${
+          message === "Password updated successfully!" ? "success" : "error"
+        }`}
+      >
+        {message}
+      </p>
+    </main>
   );
 };
 

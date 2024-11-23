@@ -18,3 +18,4 @@ It is used in splity app when there is email or password change
     ```bash
     docker run -p 3000:80 splity-web
     ```
+3. The application is now running on localhost:3000.

@@ -22,19 +22,33 @@ const AuthRedirect = () => {
   }, []);
 
   if (!type) {
-    return <div>Error: Missing or invalid parameters</div>;
+    return (
+      <main>
+        <h1 className="error">Error: Missing or invalid parameters</h1>
+      </main>
+    );
   }
 
   switch (type) {
     case "recovery":
       if (!accessToken) {
-        return <div>Error: Missing access token for password reset</div>;
+        return (
+          <main>
+            <h1 className="error">
+              Error: Missing access token for password reset
+            </h1>
+          </main>
+        );
       }
       return <ResetPassword accessToken={accessToken} />;
     case "email_change":
       return <EmailChanged />;
     default:
-      return <div>Error: Unknown type</div>;
+      return (
+        <main>
+          <h1 className="error">Error: Unknown type</h1>
+        </main>
+      );
   }
 };
 

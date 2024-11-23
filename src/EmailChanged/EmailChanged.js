@@ -2,10 +2,10 @@ import React from "react";
 
 const EmailChanged = () => {
   return (
-    <div>
+    <main>
       <h1>Email Changed</h1>
-      <p>Your email has been successfully updated.</p>
-    </div>
+      <p className="success">Your email has been successfully updated.</p>
+    </main>
   );
 };
 
